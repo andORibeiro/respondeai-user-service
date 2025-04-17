@@ -1,5 +1,7 @@
 # 👤 RespondeAI User Service
 
+[![Documentação Swagger](https://img.shields.io/badge/Swagger-Documentação-green?logo=swagger)](http://localhost:3002/api-docs)
+
 🚀 **RespondeAI User Service** é um microserviço responsável por gerenciar usuários da plataforma RespondeAI, incluindo alunos e professores. Ele também é responsável pelo controle de XP, níveis e rankings.
 
 ---
@@ -75,3 +77,15 @@ MONGODB_URI=mongodb://localhost:27017/respondeai_users
 | PATCH  | /api/usuarios/:id/xp          | Atualiza o XP do usuário                 |
 | GET    | /api/usuarios/:id             | Retorna dados do usuário por ID          |
 | GET    | /api/usuarios/ranking/geral   | Retorna ranking geral de alunos por XP   |
+
+---
+
+## 📄 Documentação Swagger
+
+### A documentação interativa da API está disponível em:
+
+```bash
+http://localhost:3002/api-docs
+```
+
+### Nela você pode visualizar e testar os endpoints, ver os formatos de entrada/saída e integrar mais facilmente com outros serviços ou frontends.

@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./src/config/swaggerConfig");
 
 dotenv.config();
 
@@ -17,6 +19,8 @@ mongoose.connect(process.env.MONGODB_URI, {
 // Rotas
 const userRoutes = require("./src/routes/userRoutes");
 app.use("/api/usuarios", userRoutes);
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Inicialização
 const PORT = process.env.PORT || 3000;

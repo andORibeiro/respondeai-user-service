@@ -4,6 +4,14 @@ exports.criarUsuario = async (req, res) => {
   try {
     const { nome, email, tipo, turma, materia } = req.body;
 
+    if (!nome || !email || !tipo) {
+      return res.status(400).json({ message: "Campos obrigatórios ausentes" });
+    }
+
+    if (!['aluno', 'professor'].includes(tipo)) {
+      return res.status(400).json({ message: "Tipo de usuário inválido" });
+    }
+
     const usuarioExistente = await User.findOne({ email });
     if (usuarioExistente) {
       return res.status(400).json({ message: "Usuário já existe" });
@@ -16,8 +24,8 @@ exports.criarUsuario = async (req, res) => {
       turma,
       materia: tipo === 'professor' ? materia : undefined
     });
-    await novoUsuario.save();
 
+    await novoUsuario.save();
     res.status(201).json(novoUsuario);
   } catch (error) {
     console.error("Erro ao criar usuário:", error);
@@ -25,20 +33,21 @@ exports.criarUsuario = async (req, res) => {
   }
 };
 
+
 exports.adicionarXp = async (req, res) => {
   const { xpGanho } = req.body;
   const { id } = req.params;
-  
+
+  if (typeof xpGanho !== 'number' || xpGanho <= 0) {
+    return res.status(400).json({ error: "XP inválido fornecido" });
+  }
 
   try {
     const user = await User.findById(id);
     if (!user) return res.status(404).json({ error: 'Usuário não encontrado' });
 
     user.xp += xpGanho;
-
-    // (Opcional) Subir de nível automaticamente a cada 10 XP
-    const novoNivel = Math.floor(user.xp / 10) + 1;
-    user.nivel = novoNivel;
+    user.nivel = Math.floor(user.xp / 10) + 1;
 
     await user.save();
 
@@ -48,6 +57,7 @@ exports.adicionarXp = async (req, res) => {
     res.status(500).json({ error: 'Erro ao atualizar XP do usuário' });
   }
 };
+
 
 exports.buscarUsuarioPorId = async (req, res) => {
   const { id } = req.params;
