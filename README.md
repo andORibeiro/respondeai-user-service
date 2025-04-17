@@ -57,6 +57,7 @@ cp .env.example .env
 
 # Inicie o servidor
 npm start
+```
 
 ## 🔐 Variáveis de Ambiente
 ### Configure o arquivo .env com as seguintes variáveis:
