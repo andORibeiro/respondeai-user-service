@@ -122,3 +122,22 @@ exports.listarTurmas = async (req, res) => {
     res.status(500).json({ error: 'Erro ao listar turmas' });
   }
 };
+
+exports.filtrarAlunosPorTurma = async (req, res) => {
+  const { turma } = req.query;
+
+  if (!turma) {
+    return res.status(400).json({ error: 'Turma não informada' });
+  }
+
+  try {
+    const alunos = await User.find({ tipo: 'aluno', turma })
+      .select('nome email xp nivel') // Seleciona apenas os campos úteis
+      .sort({ nome: 1 }); // Ordena por nome
+
+    res.json(alunos);
+  } catch (error) {
+    console.error('Erro ao buscar alunos por turma:', error);
+    res.status(500).json({ error: 'Erro ao buscar alunos por turma' });
+  }
+};

@@ -18,6 +18,7 @@
 - **Armazenamento de XP e atualização automática de nível**.
 - **Ranking geral baseado em XP acumulado**.
 - **Recuperar as turmas existentes dos alunos**.
+- **Retorna os alunos de uma turma**.
 - **Validação de dados de entrada** (ex: tipo de usuário, XP positivo, campos obrigatórios).
 - **Associação de alunos a turmas e professores a matérias**.
 
@@ -86,6 +87,7 @@ MONGODB_URI=mongodb://localhost:27017/respondeai_users
 | GET    | /api/usuarios/:id             | Retorna os dados de um usuário por ID             |
 | GET    | /api/usuarios/ranking/geral   | Retorna ranking geral dos alunos com base no XP   |
 | GET    | /api/usuarios/turmas/geral    | Retorna as turmas existentes dos alunos cadastrados   |
+| GET    | /api/usuarios/turmas/turma?turma={turma}    | Retorna os alunos de uma turma   |
 
 ---
 
@@ -118,6 +120,7 @@ http://localhost:3002/api-docs
 - `PATCH /api/usuarios/:id/xp`: Atualização de XP e nível do usuário
 - `GET /api/usuarios/ranking/geral`: Ranking geral de alunos com base no XP acumulado
 - `GET /api/usuarios/turmas/geral`: Turmas existentes dos alunos
+- `GET /api/usuarios/turmas/turma?turma={turma}`: Alunos de uma turma
 
 Essa interface permite que você:
 - Visualize todos os endpoints disponíveis e suas descrições

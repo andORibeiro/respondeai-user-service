@@ -118,3 +118,24 @@
  *       500:
  *         description: Erro ao listar turmas
  */
+
+
+/**
+ * @swagger
+ * /api/usuarios/turmas/alunos?turma={turma}:
+ *   get:
+ *     summary: Obter os alunos de uma turma específica
+ *     tags: [Usuários]
+ *     parameters:
+ *       - in: query
+ *         name: turma
+ *         description: Nome da turma
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Lista de alunos da turma
+ *       500:
+ *         description: Erro ao listar alunos
+ */
