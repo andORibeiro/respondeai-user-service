@@ -17,6 +17,7 @@
 - **Cadastro de usuários**: alunos e professores.
 - **Armazenamento de XP e atualização automática de nível**.
 - **Ranking geral baseado em XP acumulado**.
+- **Recuperar as turmas existentes dos alunos**.
 - **Validação de dados de entrada** (ex: tipo de usuário, XP positivo, campos obrigatórios).
 - **Associação de alunos a turmas e professores a matérias**.
 
@@ -84,6 +85,7 @@ MONGODB_URI=mongodb://localhost:27017/respondeai_users
 | PATCH  | /api/usuarios/:id/xp          | Atualiza o XP e nível de um usuário               |
 | GET    | /api/usuarios/:id             | Retorna os dados de um usuário por ID             |
 | GET    | /api/usuarios/ranking/geral   | Retorna ranking geral dos alunos com base no XP   |
+| GET    | /api/usuarios/turmas/geral    | Retorna as turmas existentes dos alunos cadastrados   |
 
 ---
 
