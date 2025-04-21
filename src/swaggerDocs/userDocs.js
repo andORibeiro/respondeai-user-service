@@ -105,3 +105,16 @@
  *       500:
  *         description: Erro ao gerar ranking
  */
+
+/**
+ * @swagger
+ * /api/usuarios/turmas/geral:
+ *   get:
+ *     summary: Obter as turmas que existem de alunos
+ *     tags: [Usuários]
+ *     responses:
+ *       200:
+ *         description: Lista de turma dos alunos
+ *       500:
+ *         description: Erro ao listar turmas
+ */
