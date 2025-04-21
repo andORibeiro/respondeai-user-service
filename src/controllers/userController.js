@@ -95,3 +95,18 @@ exports.rankingGeral = async (req, res) => {
     res.status(500).json({ error: 'Erro ao gerar ranking' });
   }
 };
+
+// Controller para buscar turmas únicas dos alunos
+exports.listarTurmas = async (req, res) => {
+  try {
+    const turmas = await User.distinct('turma', { tipo: 'aluno' });
+    
+    // Remove turmas vazias/null (caso existam)
+    const turmasFiltradas = turmas.filter(t => t && t.trim() !== '');
+
+    res.json(turmasFiltradas);
+  } catch (error) {
+    console.error("Erro ao listar turmas:", error);
+    res.status(500).json({ error: 'Erro ao listar turmas' });
+  }
+};

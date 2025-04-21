@@ -14,4 +14,7 @@ router.get('/:id', userController.buscarUsuarioPorId);
 // ✅ Gerar ranking geral de alunos baseado no XP
 router.get('/ranking/geral', userController.rankingGeral);
 
+// ✅ Recuperar as turmas que existem de alunos
+router.get('/turmas/geral', userController.listarTurmas);
+
 module.exports = router;
