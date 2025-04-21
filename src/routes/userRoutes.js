@@ -17,4 +17,7 @@ router.get('/ranking/geral', userController.rankingGeral);
 // ✅ Recuperar as turmas que existem de alunos
 router.get('/turmas/geral', userController.listarTurmas);
 
+// ✅ Recuperar aos alunos por turma
+router.get('/turmas/alunos', userController.filtrarAlunosPorTurma);
+
 module.exports = router;
