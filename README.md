@@ -117,6 +117,7 @@ http://localhost:3002/api-docs
 - `GET /api/usuarios/:id`: Busca de usuário por ID
 - `PATCH /api/usuarios/:id/xp`: Atualização de XP e nível do usuário
 - `GET /api/usuarios/ranking/geral`: Ranking geral de alunos com base no XP acumulado
+- `GET /api/usuarios/turmas/geral`: Turmas existentes dos alunos
 
 Essa interface permite que você:
 - Visualize todos os endpoints disponíveis e suas descrições
