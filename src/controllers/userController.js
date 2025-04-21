@@ -99,12 +99,24 @@ exports.rankingGeral = async (req, res) => {
 // Controller para buscar turmas únicas dos alunos
 exports.listarTurmas = async (req, res) => {
   try {
-    const turmas = await User.distinct('turma', { tipo: 'aluno' });
-    
-    // Remove turmas vazias/null (caso existam)
-    const turmasFiltradas = turmas.filter(t => t && t.trim() !== '');
+    const turmas = await User.aggregate([
+      { $match: { tipo: 'aluno', turma: { $ne: null, $ne: '' } } },
+      { $group: {
+          _id: '$turma',
+          quantidadeAlunos: { $sum: 1 }
+        }
+      },
+      { $sort: { _id: 1 } } // ordena alfabeticamente por turma
+    ]);
 
-    res.json(turmasFiltradas);
+    // Renomeia o campo _id para turma
+    const resultado = turmas.map(turma => ({
+      turma: turma._id,
+      quantidadeAlunos: turma.quantidadeAlunos
+    }));
+
+
+    res.json(resultado);
   } catch (error) {
     console.error("Erro ao listar turmas:", error);
     res.status(500).json({ error: 'Erro ao listar turmas' });
