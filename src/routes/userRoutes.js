@@ -11,6 +11,9 @@ router.patch('/:id/xp', userController.adicionarXp);
 // ✅ Buscar informações completas de um usuário por ID
 router.get('/:id', userController.buscarUsuarioPorId);
 
+// ✅ Buscar informações completas de um usuário por email
+router.get('/email/:email', userController.buscarUsuarioPorEmail);
+
 // ✅ Gerar ranking geral de alunos baseado no XP
 router.get('/ranking/geral', userController.rankingGeral);
 

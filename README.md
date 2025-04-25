@@ -19,6 +19,7 @@
 - **Ranking geral baseado em XP acumulado**.
 - **Recuperar as turmas existentes dos alunos**.
 - **Retorna os alunos de uma turma**.
+- **Recupera dados dos usuários**.
 - **Validação de dados de entrada** (ex: tipo de usuário, XP positivo, campos obrigatórios).
 - **Associação de alunos a turmas e professores a matérias**.
 
@@ -85,6 +86,7 @@ MONGODB_URI=mongodb://localhost:27017/respondeai_users
 | POST   | /api/usuarios                 | Cria um novo usuário                              |
 | PATCH  | /api/usuarios/:id/xp          | Atualiza o XP e nível de um usuário               |
 | GET    | /api/usuarios/:id             | Retorna os dados de um usuário por ID             |
+| GET    | /api/usuarios/email/:email    | Retorna os dados de um usuário por E-mail         |
 | GET    | /api/usuarios/ranking/geral   | Retorna ranking geral dos alunos com base no XP   |
 | GET    | /api/usuarios/turmas/geral    | Retorna as turmas existentes dos alunos cadastrados   |
 | GET    | /api/usuarios/turmas/turma?turma={turma}    | Retorna os alunos de uma turma   |
@@ -117,6 +119,7 @@ http://localhost:3002/api-docs
 
 - `POST /api/usuarios`: Criação de usuários com validações (aluno ou professor)
 - `GET /api/usuarios/:id`: Busca de usuário por ID
+- `GET /api/usuarios/email/:email`: Busca de usuário por E-mail
 - `PATCH /api/usuarios/:id/xp`: Atualização de XP e nível do usuário
 - `GET /api/usuarios/ranking/geral`: Ranking geral de alunos com base no XP acumulado
 - `GET /api/usuarios/turmas/geral`: Turmas existentes dos alunos

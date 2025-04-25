@@ -95,6 +95,28 @@
 
 /**
  * @swagger
+ * /api/usuarios/email/{email}:
+ *   get:
+ *     summary: Buscar usuário por E-mail
+ *     tags: [Usuários]
+ *     parameters:
+ *       - in: path
+ *         name: email
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Dados do usuário retornados com sucesso
+ *       404:
+ *         description: Usuário não encontrado
+ *       500:
+ *         description: Erro ao buscar usuário
+ */
+
+
+/**
+ * @swagger
  * /api/usuarios/ranking/geral:
  *   get:
  *     summary: Obter ranking geral de alunos por XP

@@ -75,6 +75,24 @@ exports.buscarUsuarioPorId = async (req, res) => {
   }
 };
 
+exports.buscarUsuarioPorEmail = async (req, res) => {
+  const { email } = req.params;
+
+  try {
+    const usuario = await User.find({ email });
+    
+    if (!usuario) {
+      return res.status(404).json({ message: "Usuário não encontrado" });
+    }
+
+    res.json(usuario[0]);
+  } catch (error) {
+    console.error("Erro ao buscar usuário:", error);
+    res.status(500).json({ message: "Erro ao buscar usuário" });
+  }
+};
+
+
 exports.rankingGeral = async (req, res) => {
   try {
     const alunos = await User.find({ tipo: 'aluno' })
@@ -86,7 +104,8 @@ exports.rankingGeral = async (req, res) => {
       posicao: index + 1,
       nome: aluno.nome,
       xp: aluno.xp,
-      nivel: aluno.nivel
+      nivel: aluno.nivel,
+      alunoId: aluno._id
     }));
 
     res.json(ranking);
